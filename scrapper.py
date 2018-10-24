@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def getLinks (url): #Como en el ejercicio anterior, la funcion obtiene los links de una URL
+def getLinks (url): #La funcion obtiene los links de una URL
     req = requests.get(url)
     bs = BeautifulSoup(req.content, 'lxml')
     tempLinks = bs.find_all('a')
@@ -18,8 +18,8 @@ def getLinks (url): #Como en el ejercicio anterior, la funcion obtiene los links
 
     return links
 
-def printLinks (url, i, n): # En este ejercicio hemos modificado la funcion para imprimir los links
-                            # en el formato requerido
+def printLinks (url, i, n):
+    
     links = getLinks(url)
     for link in links:
         print('  '*i + '--- ' + link)
@@ -35,7 +35,7 @@ def printLinks (url, i, n): # En este ejercicio hemos modificado la funcion para
 
 def main ():
     url = input('Introduzca una URL: ')
-    try: # Con el try nos aseguramos que el se ha introducido un entero
+    try: # Con el try nos aseguramos que se ha introducido un entero
         n = int(input('Introduzca el numero de iteraciones: '))
     except ValueError:
         print('No ha introducido un numero')
